@@ -1,6 +1,5 @@
-# myCode
-to test repo
 import { LightningElement, track } from 'lwc';
+import myIcon from '@salesforce/resourceUrl/myIcon';
 
 export default class MyDatatable extends LightningElement {
     @track data = [
@@ -14,11 +13,17 @@ export default class MyDatatable extends LightningElement {
     get customColumns() {
         return [
             { 
-                type: 'checkbox', 
+                type: 'button-icon', 
                 fieldName: 'checkbox', 
                 label: 'Select', 
                 typeAttributes: { 
-                    rowKeyValue: { fieldName: 'id' } 
+                    iconName: { fieldName: 'iconName' }, 
+                    alternativeText: 'Select Row', 
+                    title: 'Select Row',
+                    variant: 'bare',
+                    name: 'select',
+                    disabled: { fieldName: 'disabled' },
+                    value: { fieldName: 'id' }
                 } 
             },
             ...this.columns,
